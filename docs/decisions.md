@@ -63,6 +63,11 @@ Stated plainly rather than buried:
 
 - `/draft`, `/pulse`, `/waiver`, `/trade` are **not implemented**. The schema
   supports them; the handlers do not exist.
+- **The MCP server is not built.** Decision 4 selected CLI + MCP; only the CLI
+  exists. Command handlers are already thin enough that MCP is a wrapper, not a
+  refactor, but it is unwritten work.
+- **There is no graphical front end**, and none is planned before the remaining
+  commands exist.
 - **ESPN stat-id map is unverified** against a real league. `draftgpt sources
   verify-espn` exists to close this and must be run before trusting projections.
 - **No projection source is selected**, so the only projections available today

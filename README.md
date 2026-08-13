@@ -15,6 +15,25 @@ may never introduce a fact.
 adapters, freshness tracking, and `/roster` end to end. `/draft`, `/pulse`,
 `/waiver`, and `/trade` are scaffolded but not yet implemented.
 
+**Interface: terminal CLI only.** There is no web UI and no MCP server yet.
+
+## Read-only guarantee
+
+This system never writes to a fantasy platform. That is enforced structurally,
+not by policy:
+
+- The ESPN client exposes a single `get()` method. No `post`, `put`, `patch`, or
+  `delete` call exists anywhere in the codebase.
+- No adapter declares a write capability; the provider contract has no verb for
+  one.
+- Nothing submits a lineup, adds or drops a player, places a waiver claim, or
+  proposes a trade. Those actions remain entirely yours to take in your league.
+
+Reading a **private** ESPN league requires `espn_s2` and `SWID` cookies from a
+logged-in browser session. Those are your ESPN session credentials: they live in
+`.env` (gitignored), are never logged, and are used only for read requests. If
+you would rather not supply them, the system still runs on fixtures.
+
 ## Quick start
 
 ```bash
@@ -59,7 +78,7 @@ database/      schema, migrations, models
 domain/        vocabularies, freshness policy, response contract
 evaluation/    deterministic scoring, lineup optimization, replacement value
 commands/      thin handlers over the engine
-interfaces/    CLI and MCP server
+interfaces/    CLI (an MCP server is planned but NOT yet built)
 ```
 
 Three layers, kept separate on purpose:
