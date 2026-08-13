@@ -1,0 +1,120 @@
+# draftgpt
+
+A league-specific fantasy football decision engine. **Read-only**: it tells you
+what to do, it never does it for you. No lineups are submitted, no players
+added, no trades proposed through any platform.
+
+The database is authoritative. Structured state, calculations, and source
+timestamps are the source of truth for availability, scoring, projections,
+eligibility, rosters, and transactions. An LLM may synthesize and explain — it
+may never introduce a fact.
+
+## Status
+
+**Phase 1 — canonical state and vertical slice.** Schema, migrations, provider
+adapters, freshness tracking, and `/roster` end to end. `/draft`, `/pulse`,
+`/waiver`, and `/trade` are scaffolded but not yet implemented.
+
+## Quick start
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+
+cp .env.example .env          # set DRAFTGPT_ESPN_LEAGUE_ID at minimum
+alembic upgrade head          # create the schema
+
+draftgpt sources register     # register provider adapters
+draftgpt sync players         # canonical players + cross-platform ID crosswalk
+draftgpt sync league          # league settings, rules, teams, rosters
+draftgpt roster week 1        # the vertical slice
+```
+
+To try it with no credentials at all, use the bundled fixture league:
+
+```bash
+draftgpt demo                 # seeds a fixture league and runs /roster
+```
+
+## Commands
+
+| Command | Status | Purpose |
+|---|---|---|
+| `/roster` | **implemented** | Lineup recommendation, conditional swaps, next check time |
+| `/draft` | Phase 2 | Live draft board and pick recommendations |
+| `/pulse` | Phase 3 | Material changes since last acknowledgement |
+| `/waiver` | Phase 3 | Ordered claim plan with FAAB bids |
+| `/trade` | Phase 4 | Two-sided lineup-delta trade evaluation |
+
+Every command returns the same structured contract: recommendation,
+alternatives, confidence, reasons, material inputs, freshness, conditional
+triggers, and when to check again.
+
+## Architecture
+
+```
+providers/     source adapters + capability contracts (espn, nflverse, fixture)
+ingestion/     run lifecycle, freshness tracking, identity reconciliation, sync
+database/      schema, migrations, models
+domain/        vocabularies, freshness policy, response contract
+evaluation/    deterministic scoring, lineup optimization, replacement value
+commands/      thin handlers over the engine
+interfaces/    CLI and MCP server
+```
+
+Three layers, kept separate on purpose:
+
+1. **State assembly** builds a validated decision snapshot, bounded by `as_of`
+   so replays never see future information.
+2. **Deterministic evaluation** does all the maths. The optimal lineup is an
+   exact maximum-weight assignment (slot eligibility forms a transversal
+   matroid), not a greedy approximation.
+3. **Explanation** is optional and may only reference `material_inputs`.
+
+## Data sources
+
+| Category | Provider | Licence | Status |
+|---|---|---|---|
+| League state | ESPN (read-only JSON) | see below | implemented |
+| Player identity crosswalk | nflverse `load_rosters` | CC-BY-4.0 | implemented |
+| Schedule, weather, betting lines | nflverse `load_schedules` | CC-BY-4.0 | implemented |
+| Injuries + practice participation | nflverse `load_injuries` | CC-BY-4.0 | implemented |
+| Depth charts | nflverse `load_depth_charts` | CC-BY-4.0 | implemented |
+| Usage / snap share | nflverse `load_snap_counts` | CC-BY-4.0 | implemented |
+| Weekly projections | **not selected** | — | fixture / CSV import |
+| ADP | **not selected** | — | fixture / CSV import |
+
+See [`docs/sources.md`](docs/sources.md) for the full adapter register,
+including licensing posture and fallback behaviour for each.
+
+### Attribution
+
+This project uses data from **[nflverse](https://nflverse.com)**, licensed under
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Accessed via
+[`nflreadpy`](https://github.com/nflverse/nflreadpy) (MIT).
+
+FTN charting data (CC-BY-SA-4.0) is deliberately **not** used, so no share-alike
+obligation attaches to this project.
+
+ESPN endpoints are the publicly readable JSON APIs used by ESPN's own web
+client, accessed read-only at low volume for a league the user belongs to. No
+HTML scraping and no redistribution of payloads.
+
+## Reproducibility
+
+Every recommendation persists a `decision_snapshot` (hashed inputs plus a
+serialized payload) and a `recommendation_run` stamped with the calculation
+version. Past advice can be replayed exactly, and backtested without leaking
+future information.
+
+## Development
+
+```bash
+pytest              # unit, integration, and golden-scenario tests
+ruff check .
+mypy
+```
+
+## Licence
+
+Not yet selected — see `docs/decisions.md`.

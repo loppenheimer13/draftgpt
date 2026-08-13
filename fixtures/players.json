@@ -1,0 +1,2693 @@
+[
+  {
+    "player_external_id": "p001",
+    "name": "Jalen Carter-Reid",
+    "first_name": "Jalen",
+    "last_name": "Carter-Reid",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "PHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p002",
+    "name": "Marcus Deveraux",
+    "first_name": "Marcus",
+    "last_name": "Deveraux",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "SF",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p003",
+    "name": "Tyrell Boone",
+    "first_name": "Tyrell",
+    "last_name": "Boone",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DET",
+    "injury_status": "Q",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p004",
+    "name": "Andre Whitlock",
+    "first_name": "Andre",
+    "last_name": "Whitlock",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p005",
+    "name": "Kai Ostrander",
+    "first_name": "Kai",
+    "last_name": "Ostrander",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "CIN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p006",
+    "name": "Bennett Shaw",
+    "first_name": "Bennett",
+    "last_name": "Shaw",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "KC",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p007",
+    "name": "Desmond Achebe",
+    "first_name": "Desmond",
+    "last_name": "Achebe",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "BUF",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p008",
+    "name": "Rory Nakamura",
+    "first_name": "Rory",
+    "last_name": "Nakamura",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "BAL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p009",
+    "name": "Seattle",
+    "first_name": "Seattle",
+    "last_name": "Seattle",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "SEA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "p010",
+    "name": "Curtis Lamm",
+    "first_name": "Curtis",
+    "last_name": "Lamm",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "GB",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p011",
+    "name": "Emeka Sowande",
+    "first_name": "Emeka",
+    "last_name": "Sowande",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "LAC",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p012",
+    "name": "Hollis Trent",
+    "first_name": "Hollis",
+    "last_name": "Trent",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "DAL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p013",
+    "name": "Xavier Mbeki",
+    "first_name": "Xavier",
+    "last_name": "Mbeki",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "NYJ",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p014",
+    "name": "Grant Ellery",
+    "first_name": "Grant",
+    "last_name": "Ellery",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ARI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "p015",
+    "name": "Damon Fitzhugh",
+    "first_name": "Damon",
+    "last_name": "Fitzhugh",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "TB",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0001",
+    "name": "Filler QB0001",
+    "first_name": "Filler",
+    "last_name": "QB0001",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0002",
+    "name": "Filler RB0002",
+    "first_name": "Filler",
+    "last_name": "RB0002",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0003",
+    "name": "Filler RB0003",
+    "first_name": "Filler",
+    "last_name": "RB0003",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0004",
+    "name": "Filler WR0004",
+    "first_name": "Filler",
+    "last_name": "WR0004",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0005",
+    "name": "Filler WR0005",
+    "first_name": "Filler",
+    "last_name": "WR0005",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0006",
+    "name": "Filler TE0006",
+    "first_name": "Filler",
+    "last_name": "TE0006",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0007",
+    "name": "Filler K0007",
+    "first_name": "Filler",
+    "last_name": "K0007",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0008",
+    "name": "Filler DST0008",
+    "first_name": "Filler",
+    "last_name": "DST0008",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0009",
+    "name": "Filler RB0009",
+    "first_name": "Filler",
+    "last_name": "RB0009",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0010",
+    "name": "Filler WR0010",
+    "first_name": "Filler",
+    "last_name": "WR0010",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0011",
+    "name": "Filler WR0011",
+    "first_name": "Filler",
+    "last_name": "WR0011",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0012",
+    "name": "Filler TE0012",
+    "first_name": "Filler",
+    "last_name": "TE0012",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0013",
+    "name": "Filler QB0013",
+    "first_name": "Filler",
+    "last_name": "QB0013",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0014",
+    "name": "Filler RB0014",
+    "first_name": "Filler",
+    "last_name": "RB0014",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0015",
+    "name": "Filler RB0015",
+    "first_name": "Filler",
+    "last_name": "RB0015",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0016",
+    "name": "Filler WR0016",
+    "first_name": "Filler",
+    "last_name": "WR0016",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0017",
+    "name": "Filler WR0017",
+    "first_name": "Filler",
+    "last_name": "WR0017",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0018",
+    "name": "Filler TE0018",
+    "first_name": "Filler",
+    "last_name": "TE0018",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0019",
+    "name": "Filler K0019",
+    "first_name": "Filler",
+    "last_name": "K0019",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0020",
+    "name": "Filler DST0020",
+    "first_name": "Filler",
+    "last_name": "DST0020",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0021",
+    "name": "Filler RB0021",
+    "first_name": "Filler",
+    "last_name": "RB0021",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0022",
+    "name": "Filler WR0022",
+    "first_name": "Filler",
+    "last_name": "WR0022",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0023",
+    "name": "Filler WR0023",
+    "first_name": "Filler",
+    "last_name": "WR0023",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0024",
+    "name": "Filler TE0024",
+    "first_name": "Filler",
+    "last_name": "TE0024",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0025",
+    "name": "Filler QB0025",
+    "first_name": "Filler",
+    "last_name": "QB0025",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0026",
+    "name": "Filler RB0026",
+    "first_name": "Filler",
+    "last_name": "RB0026",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0027",
+    "name": "Filler RB0027",
+    "first_name": "Filler",
+    "last_name": "RB0027",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0028",
+    "name": "Filler WR0028",
+    "first_name": "Filler",
+    "last_name": "WR0028",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0029",
+    "name": "Filler WR0029",
+    "first_name": "Filler",
+    "last_name": "WR0029",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0030",
+    "name": "Filler TE0030",
+    "first_name": "Filler",
+    "last_name": "TE0030",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0031",
+    "name": "Filler K0031",
+    "first_name": "Filler",
+    "last_name": "K0031",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0032",
+    "name": "Filler DST0032",
+    "first_name": "Filler",
+    "last_name": "DST0032",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0033",
+    "name": "Filler RB0033",
+    "first_name": "Filler",
+    "last_name": "RB0033",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0034",
+    "name": "Filler WR0034",
+    "first_name": "Filler",
+    "last_name": "WR0034",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0035",
+    "name": "Filler WR0035",
+    "first_name": "Filler",
+    "last_name": "WR0035",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0036",
+    "name": "Filler TE0036",
+    "first_name": "Filler",
+    "last_name": "TE0036",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0037",
+    "name": "Filler QB0037",
+    "first_name": "Filler",
+    "last_name": "QB0037",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0038",
+    "name": "Filler RB0038",
+    "first_name": "Filler",
+    "last_name": "RB0038",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0039",
+    "name": "Filler RB0039",
+    "first_name": "Filler",
+    "last_name": "RB0039",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0040",
+    "name": "Filler WR0040",
+    "first_name": "Filler",
+    "last_name": "WR0040",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0041",
+    "name": "Filler WR0041",
+    "first_name": "Filler",
+    "last_name": "WR0041",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0042",
+    "name": "Filler TE0042",
+    "first_name": "Filler",
+    "last_name": "TE0042",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0043",
+    "name": "Filler K0043",
+    "first_name": "Filler",
+    "last_name": "K0043",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0044",
+    "name": "Filler DST0044",
+    "first_name": "Filler",
+    "last_name": "DST0044",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0045",
+    "name": "Filler RB0045",
+    "first_name": "Filler",
+    "last_name": "RB0045",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0046",
+    "name": "Filler WR0046",
+    "first_name": "Filler",
+    "last_name": "WR0046",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0047",
+    "name": "Filler WR0047",
+    "first_name": "Filler",
+    "last_name": "WR0047",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0048",
+    "name": "Filler TE0048",
+    "first_name": "Filler",
+    "last_name": "TE0048",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0049",
+    "name": "Filler QB0049",
+    "first_name": "Filler",
+    "last_name": "QB0049",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0050",
+    "name": "Filler RB0050",
+    "first_name": "Filler",
+    "last_name": "RB0050",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0051",
+    "name": "Filler RB0051",
+    "first_name": "Filler",
+    "last_name": "RB0051",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0052",
+    "name": "Filler WR0052",
+    "first_name": "Filler",
+    "last_name": "WR0052",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0053",
+    "name": "Filler WR0053",
+    "first_name": "Filler",
+    "last_name": "WR0053",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0054",
+    "name": "Filler TE0054",
+    "first_name": "Filler",
+    "last_name": "TE0054",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0055",
+    "name": "Filler K0055",
+    "first_name": "Filler",
+    "last_name": "K0055",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0056",
+    "name": "Filler DST0056",
+    "first_name": "Filler",
+    "last_name": "DST0056",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0057",
+    "name": "Filler RB0057",
+    "first_name": "Filler",
+    "last_name": "RB0057",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0058",
+    "name": "Filler WR0058",
+    "first_name": "Filler",
+    "last_name": "WR0058",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0059",
+    "name": "Filler WR0059",
+    "first_name": "Filler",
+    "last_name": "WR0059",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0060",
+    "name": "Filler TE0060",
+    "first_name": "Filler",
+    "last_name": "TE0060",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0061",
+    "name": "Filler QB0061",
+    "first_name": "Filler",
+    "last_name": "QB0061",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0062",
+    "name": "Filler RB0062",
+    "first_name": "Filler",
+    "last_name": "RB0062",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0063",
+    "name": "Filler RB0063",
+    "first_name": "Filler",
+    "last_name": "RB0063",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0064",
+    "name": "Filler WR0064",
+    "first_name": "Filler",
+    "last_name": "WR0064",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0065",
+    "name": "Filler WR0065",
+    "first_name": "Filler",
+    "last_name": "WR0065",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0066",
+    "name": "Filler TE0066",
+    "first_name": "Filler",
+    "last_name": "TE0066",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0067",
+    "name": "Filler K0067",
+    "first_name": "Filler",
+    "last_name": "K0067",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0068",
+    "name": "Filler DST0068",
+    "first_name": "Filler",
+    "last_name": "DST0068",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0069",
+    "name": "Filler RB0069",
+    "first_name": "Filler",
+    "last_name": "RB0069",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0070",
+    "name": "Filler WR0070",
+    "first_name": "Filler",
+    "last_name": "WR0070",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0071",
+    "name": "Filler WR0071",
+    "first_name": "Filler",
+    "last_name": "WR0071",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0072",
+    "name": "Filler TE0072",
+    "first_name": "Filler",
+    "last_name": "TE0072",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0073",
+    "name": "Filler QB0073",
+    "first_name": "Filler",
+    "last_name": "QB0073",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0074",
+    "name": "Filler RB0074",
+    "first_name": "Filler",
+    "last_name": "RB0074",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0075",
+    "name": "Filler RB0075",
+    "first_name": "Filler",
+    "last_name": "RB0075",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0076",
+    "name": "Filler WR0076",
+    "first_name": "Filler",
+    "last_name": "WR0076",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0077",
+    "name": "Filler WR0077",
+    "first_name": "Filler",
+    "last_name": "WR0077",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0078",
+    "name": "Filler TE0078",
+    "first_name": "Filler",
+    "last_name": "TE0078",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0079",
+    "name": "Filler K0079",
+    "first_name": "Filler",
+    "last_name": "K0079",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0080",
+    "name": "Filler DST0080",
+    "first_name": "Filler",
+    "last_name": "DST0080",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0081",
+    "name": "Filler RB0081",
+    "first_name": "Filler",
+    "last_name": "RB0081",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0082",
+    "name": "Filler WR0082",
+    "first_name": "Filler",
+    "last_name": "WR0082",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0083",
+    "name": "Filler WR0083",
+    "first_name": "Filler",
+    "last_name": "WR0083",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0084",
+    "name": "Filler TE0084",
+    "first_name": "Filler",
+    "last_name": "TE0084",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0085",
+    "name": "Filler QB0085",
+    "first_name": "Filler",
+    "last_name": "QB0085",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0086",
+    "name": "Filler RB0086",
+    "first_name": "Filler",
+    "last_name": "RB0086",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0087",
+    "name": "Filler RB0087",
+    "first_name": "Filler",
+    "last_name": "RB0087",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0088",
+    "name": "Filler WR0088",
+    "first_name": "Filler",
+    "last_name": "WR0088",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0089",
+    "name": "Filler WR0089",
+    "first_name": "Filler",
+    "last_name": "WR0089",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0090",
+    "name": "Filler TE0090",
+    "first_name": "Filler",
+    "last_name": "TE0090",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0091",
+    "name": "Filler K0091",
+    "first_name": "Filler",
+    "last_name": "K0091",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0092",
+    "name": "Filler DST0092",
+    "first_name": "Filler",
+    "last_name": "DST0092",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0093",
+    "name": "Filler RB0093",
+    "first_name": "Filler",
+    "last_name": "RB0093",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0094",
+    "name": "Filler WR0094",
+    "first_name": "Filler",
+    "last_name": "WR0094",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0095",
+    "name": "Filler WR0095",
+    "first_name": "Filler",
+    "last_name": "WR0095",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0096",
+    "name": "Filler TE0096",
+    "first_name": "Filler",
+    "last_name": "TE0096",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0097",
+    "name": "Filler QB0097",
+    "first_name": "Filler",
+    "last_name": "QB0097",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0098",
+    "name": "Filler RB0098",
+    "first_name": "Filler",
+    "last_name": "RB0098",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0099",
+    "name": "Filler RB0099",
+    "first_name": "Filler",
+    "last_name": "RB0099",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0100",
+    "name": "Filler WR0100",
+    "first_name": "Filler",
+    "last_name": "WR0100",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0101",
+    "name": "Filler WR0101",
+    "first_name": "Filler",
+    "last_name": "WR0101",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0102",
+    "name": "Filler TE0102",
+    "first_name": "Filler",
+    "last_name": "TE0102",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0103",
+    "name": "Filler K0103",
+    "first_name": "Filler",
+    "last_name": "K0103",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0104",
+    "name": "Filler DST0104",
+    "first_name": "Filler",
+    "last_name": "DST0104",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0105",
+    "name": "Filler RB0105",
+    "first_name": "Filler",
+    "last_name": "RB0105",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0106",
+    "name": "Filler WR0106",
+    "first_name": "Filler",
+    "last_name": "WR0106",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0107",
+    "name": "Filler WR0107",
+    "first_name": "Filler",
+    "last_name": "WR0107",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0108",
+    "name": "Filler TE0108",
+    "first_name": "Filler",
+    "last_name": "TE0108",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0109",
+    "name": "Filler QB0109",
+    "first_name": "Filler",
+    "last_name": "QB0109",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0110",
+    "name": "Filler RB0110",
+    "first_name": "Filler",
+    "last_name": "RB0110",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0111",
+    "name": "Filler RB0111",
+    "first_name": "Filler",
+    "last_name": "RB0111",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0112",
+    "name": "Filler WR0112",
+    "first_name": "Filler",
+    "last_name": "WR0112",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0113",
+    "name": "Filler WR0113",
+    "first_name": "Filler",
+    "last_name": "WR0113",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0114",
+    "name": "Filler TE0114",
+    "first_name": "Filler",
+    "last_name": "TE0114",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0115",
+    "name": "Filler K0115",
+    "first_name": "Filler",
+    "last_name": "K0115",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0116",
+    "name": "Filler DST0116",
+    "first_name": "Filler",
+    "last_name": "DST0116",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0117",
+    "name": "Filler RB0117",
+    "first_name": "Filler",
+    "last_name": "RB0117",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0118",
+    "name": "Filler WR0118",
+    "first_name": "Filler",
+    "last_name": "WR0118",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0119",
+    "name": "Filler WR0119",
+    "first_name": "Filler",
+    "last_name": "WR0119",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0120",
+    "name": "Filler TE0120",
+    "first_name": "Filler",
+    "last_name": "TE0120",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0121",
+    "name": "Filler QB0121",
+    "first_name": "Filler",
+    "last_name": "QB0121",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0122",
+    "name": "Filler RB0122",
+    "first_name": "Filler",
+    "last_name": "RB0122",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0123",
+    "name": "Filler RB0123",
+    "first_name": "Filler",
+    "last_name": "RB0123",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0124",
+    "name": "Filler WR0124",
+    "first_name": "Filler",
+    "last_name": "WR0124",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0125",
+    "name": "Filler WR0125",
+    "first_name": "Filler",
+    "last_name": "WR0125",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0126",
+    "name": "Filler TE0126",
+    "first_name": "Filler",
+    "last_name": "TE0126",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0127",
+    "name": "Filler K0127",
+    "first_name": "Filler",
+    "last_name": "K0127",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0128",
+    "name": "Filler DST0128",
+    "first_name": "Filler",
+    "last_name": "DST0128",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "f0129",
+    "name": "Filler RB0129",
+    "first_name": "Filler",
+    "last_name": "RB0129",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0130",
+    "name": "Filler WR0130",
+    "first_name": "Filler",
+    "last_name": "WR0130",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0131",
+    "name": "Filler WR0131",
+    "first_name": "Filler",
+    "last_name": "WR0131",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "f0132",
+    "name": "Filler TE0132",
+    "first_name": "Filler",
+    "last_name": "TE0132",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0001",
+    "name": "FreeAgent 0001",
+    "first_name": "FreeAgent",
+    "last_name": "0001",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0002",
+    "name": "FreeAgent 0002",
+    "first_name": "FreeAgent",
+    "last_name": "0002",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0003",
+    "name": "FreeAgent 0003",
+    "first_name": "FreeAgent",
+    "last_name": "0003",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0004",
+    "name": "FreeAgent 0004",
+    "first_name": "FreeAgent",
+    "last_name": "0004",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "IND",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0005",
+    "name": "FreeAgent 0005",
+    "first_name": "FreeAgent",
+    "last_name": "0005",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0006",
+    "name": "FreeAgent 0006",
+    "first_name": "FreeAgent",
+    "last_name": "0006",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "LV",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0007",
+    "name": "FreeAgent 0007",
+    "first_name": "FreeAgent",
+    "last_name": "0007",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "fa0008",
+    "name": "FreeAgent 0008",
+    "first_name": "FreeAgent",
+    "last_name": "0008",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "NE",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0009",
+    "name": "FreeAgent 0009",
+    "first_name": "FreeAgent",
+    "last_name": "0009",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0010",
+    "name": "FreeAgent 0010",
+    "first_name": "FreeAgent",
+    "last_name": "0010",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "PIT",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0011",
+    "name": "FreeAgent 0011",
+    "first_name": "FreeAgent",
+    "last_name": "0011",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0012",
+    "name": "FreeAgent 0012",
+    "first_name": "FreeAgent",
+    "last_name": "0012",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ATL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0013",
+    "name": "FreeAgent 0013",
+    "first_name": "FreeAgent",
+    "last_name": "0013",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0014",
+    "name": "FreeAgent 0014",
+    "first_name": "FreeAgent",
+    "last_name": "0014",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0015",
+    "name": "FreeAgent 0015",
+    "first_name": "FreeAgent",
+    "last_name": "0015",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0016",
+    "name": "FreeAgent 0016",
+    "first_name": "FreeAgent",
+    "last_name": "0016",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "IND",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0017",
+    "name": "FreeAgent 0017",
+    "first_name": "FreeAgent",
+    "last_name": "0017",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0018",
+    "name": "FreeAgent 0018",
+    "first_name": "FreeAgent",
+    "last_name": "0018",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "LV",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0019",
+    "name": "FreeAgent 0019",
+    "first_name": "FreeAgent",
+    "last_name": "0019",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "fa0020",
+    "name": "FreeAgent 0020",
+    "first_name": "FreeAgent",
+    "last_name": "0020",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "NE",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0021",
+    "name": "FreeAgent 0021",
+    "first_name": "FreeAgent",
+    "last_name": "0021",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0022",
+    "name": "FreeAgent 0022",
+    "first_name": "FreeAgent",
+    "last_name": "0022",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "PIT",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0023",
+    "name": "FreeAgent 0023",
+    "first_name": "FreeAgent",
+    "last_name": "0023",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0024",
+    "name": "FreeAgent 0024",
+    "first_name": "FreeAgent",
+    "last_name": "0024",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ATL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0025",
+    "name": "FreeAgent 0025",
+    "first_name": "FreeAgent",
+    "last_name": "0025",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0026",
+    "name": "FreeAgent 0026",
+    "first_name": "FreeAgent",
+    "last_name": "0026",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0027",
+    "name": "FreeAgent 0027",
+    "first_name": "FreeAgent",
+    "last_name": "0027",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0028",
+    "name": "FreeAgent 0028",
+    "first_name": "FreeAgent",
+    "last_name": "0028",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "IND",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0029",
+    "name": "FreeAgent 0029",
+    "first_name": "FreeAgent",
+    "last_name": "0029",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0030",
+    "name": "FreeAgent 0030",
+    "first_name": "FreeAgent",
+    "last_name": "0030",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "LV",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0031",
+    "name": "FreeAgent 0031",
+    "first_name": "FreeAgent",
+    "last_name": "0031",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "fa0032",
+    "name": "FreeAgent 0032",
+    "first_name": "FreeAgent",
+    "last_name": "0032",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "NE",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0033",
+    "name": "FreeAgent 0033",
+    "first_name": "FreeAgent",
+    "last_name": "0033",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0034",
+    "name": "FreeAgent 0034",
+    "first_name": "FreeAgent",
+    "last_name": "0034",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "PIT",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0035",
+    "name": "FreeAgent 0035",
+    "first_name": "FreeAgent",
+    "last_name": "0035",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0036",
+    "name": "FreeAgent 0036",
+    "first_name": "FreeAgent",
+    "last_name": "0036",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ATL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0037",
+    "name": "FreeAgent 0037",
+    "first_name": "FreeAgent",
+    "last_name": "0037",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0038",
+    "name": "FreeAgent 0038",
+    "first_name": "FreeAgent",
+    "last_name": "0038",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0039",
+    "name": "FreeAgent 0039",
+    "first_name": "FreeAgent",
+    "last_name": "0039",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0040",
+    "name": "FreeAgent 0040",
+    "first_name": "FreeAgent",
+    "last_name": "0040",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "IND",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0041",
+    "name": "FreeAgent 0041",
+    "first_name": "FreeAgent",
+    "last_name": "0041",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0042",
+    "name": "FreeAgent 0042",
+    "first_name": "FreeAgent",
+    "last_name": "0042",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "LV",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0043",
+    "name": "FreeAgent 0043",
+    "first_name": "FreeAgent",
+    "last_name": "0043",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "fa0044",
+    "name": "FreeAgent 0044",
+    "first_name": "FreeAgent",
+    "last_name": "0044",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "NE",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0045",
+    "name": "FreeAgent 0045",
+    "first_name": "FreeAgent",
+    "last_name": "0045",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0046",
+    "name": "FreeAgent 0046",
+    "first_name": "FreeAgent",
+    "last_name": "0046",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "PIT",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0047",
+    "name": "FreeAgent 0047",
+    "first_name": "FreeAgent",
+    "last_name": "0047",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0048",
+    "name": "FreeAgent 0048",
+    "first_name": "FreeAgent",
+    "last_name": "0048",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ATL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0049",
+    "name": "FreeAgent 0049",
+    "first_name": "FreeAgent",
+    "last_name": "0049",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "CHI",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0050",
+    "name": "FreeAgent 0050",
+    "first_name": "FreeAgent",
+    "last_name": "0050",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "DEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0051",
+    "name": "FreeAgent 0051",
+    "first_name": "FreeAgent",
+    "last_name": "0051",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "HOU",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0052",
+    "name": "FreeAgent 0052",
+    "first_name": "FreeAgent",
+    "last_name": "0052",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "IND",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0053",
+    "name": "FreeAgent 0053",
+    "first_name": "FreeAgent",
+    "last_name": "0053",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "JAX",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0054",
+    "name": "FreeAgent 0054",
+    "first_name": "FreeAgent",
+    "last_name": "0054",
+    "position": "K",
+    "positions": [
+      "K"
+    ],
+    "pro_team": "LV",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0055",
+    "name": "FreeAgent 0055",
+    "first_name": "FreeAgent",
+    "last_name": "0055",
+    "position": "DST",
+    "positions": [
+      "DST"
+    ],
+    "pro_team": "MIA",
+    "injury_status": "ACTIVE",
+    "is_team_defense": true
+  },
+  {
+    "player_external_id": "fa0056",
+    "name": "FreeAgent 0056",
+    "first_name": "FreeAgent",
+    "last_name": "0056",
+    "position": "RB",
+    "positions": [
+      "RB"
+    ],
+    "pro_team": "NE",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0057",
+    "name": "FreeAgent 0057",
+    "first_name": "FreeAgent",
+    "last_name": "0057",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "NO",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0058",
+    "name": "FreeAgent 0058",
+    "first_name": "FreeAgent",
+    "last_name": "0058",
+    "position": "WR",
+    "positions": [
+      "WR"
+    ],
+    "pro_team": "PIT",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0059",
+    "name": "FreeAgent 0059",
+    "first_name": "FreeAgent",
+    "last_name": "0059",
+    "position": "TE",
+    "positions": [
+      "TE"
+    ],
+    "pro_team": "TEN",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  },
+  {
+    "player_external_id": "fa0060",
+    "name": "FreeAgent 0060",
+    "first_name": "FreeAgent",
+    "last_name": "0060",
+    "position": "QB",
+    "positions": [
+      "QB"
+    ],
+    "pro_team": "ATL",
+    "injury_status": "ACTIVE",
+    "is_team_defense": false
+  }
+]

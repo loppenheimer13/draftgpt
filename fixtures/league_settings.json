@@ -1,0 +1,121 @@
+{
+  "external_id": "fixture-league-1",
+  "name": "Fixture Dynasty of Testing",
+  "season": 2026,
+  "team_count": 12,
+  "current_week": 1,
+  "regular_season_weeks": 14,
+  "playoff_team_count": 6,
+  "playoff_weeks": [
+    15,
+    16,
+    17
+  ],
+  "status": "in_season",
+  "format": "redraft",
+  "scoring": {
+    "pass_yd": 0.04,
+    "pass_td": 4.0,
+    "pass_int": -2.0,
+    "rush_yd": 0.1,
+    "rush_td": 6.0,
+    "rec": 1.0,
+    "rec_yd": 0.1,
+    "rec_td": 6.0,
+    "fum_lost": -2.0,
+    "bonuses": [
+      {
+        "stat": "pass_yd",
+        "threshold": 300,
+        "points": 3.0
+      },
+      {
+        "stat": "rush_yd",
+        "threshold": 100,
+        "points": 3.0
+      },
+      {
+        "stat": "rec_yd",
+        "threshold": 100,
+        "points": 3.0
+      }
+    ]
+  },
+  "roster_slots": [
+    {
+      "slot": "QB",
+      "count": 1,
+      "eligible_positions": [
+        "QB"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "RB",
+      "count": 2,
+      "eligible_positions": [
+        "RB"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "WR",
+      "count": 2,
+      "eligible_positions": [
+        "WR"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "TE",
+      "count": 1,
+      "eligible_positions": [
+        "TE"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "FLEX",
+      "count": 1,
+      "eligible_positions": [
+        "RB",
+        "WR",
+        "TE"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "K",
+      "count": 1,
+      "eligible_positions": [
+        "K"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "DST",
+      "count": 1,
+      "eligible_positions": [
+        "DST"
+      ],
+      "is_starting": true
+    },
+    {
+      "slot": "BE",
+      "count": 6,
+      "eligible_positions": [],
+      "is_starting": false
+    }
+  ],
+  "roster_size": 15,
+  "ir_slots": 0,
+  "waiver_type": "faab",
+  "faab_budget": 100,
+  "waiver_process_days": [
+    "WED"
+  ],
+  "trade_deadline_at": null,
+  "raw_settings": {
+    "note": "hand-authored fixture; no external provider"
+  }
+}
