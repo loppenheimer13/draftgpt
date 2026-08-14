@@ -35,6 +35,8 @@ SPEC = ProviderSpec(
         Capability.PLAYER_REGISTRY,
         Capability.MARKET_TRENDS,
         Capability.INJURIES,
+        Capability.PROJECTIONS_WEEKLY,
+        Capability.PROJECTIONS_SEASON,
     ),
     freshness_class=FreshnessClass.RAPID,
     requires_auth=False,
@@ -293,6 +295,44 @@ class EspnLeagueProvider(LeagueProvider):
             )
         return self._result(records)
 
+    def fetch_projections_weekly(
+        self, week: int, limit: int = 800, **_: Any
+    ) -> FetchResult:
+        """ESPN's own weekly projections for the whole player pool.
+
+        Why ESPN's numbers: they are already in the payload we fetch for rosters,
+        they need no additional terms review, and they are the same numbers shown
+        in your league UI -- so a disagreement between this system and ESPN is a
+        real disagreement about the decision, not a data-source artifact.
+
+        We keep ESPN's raw stat line and re-score it under the league's own rules
+        rather than trusting ``appliedTotal``. That keeps one scoring engine
+        authoritative and makes ESPN's total a cross-check instead of a
+        dependency. Where the two disagree materially, the stat-id map is wrong
+        and ``sources verify-espn`` should be run.
+        """
+        payload = self.client.player_pool(
+            limit=limit, status="ALL", scoring_period_id=week
+        )
+        records, mismatches = _projection_records(
+            payload.get("players", []) or [], season=self._season, week=week, scope="week"
+        )
+        notes = []
+        if mismatches:
+            notes.append(
+                f"{len(mismatches)} player(s) where our re-scored total differs from ESPN's "
+                "appliedTotal by >15% -- likely a stat-id mapping gap; run "
+                "`draftgpt sources verify-espn`"
+            )
+        return self._result(records, notes=notes, effective_at=datetime.now(UTC))
+
+    def fetch_projections_season(self, limit: int = 800, **_: Any) -> FetchResult:
+        payload = self.client.player_pool(limit=limit, status="ALL")
+        records, _ = _projection_records(
+            payload.get("players", []) or [], season=self._season, week=None, scope="season"
+        )
+        return self._result(records, effective_at=datetime.now(UTC))
+
     def fetch_injuries(self, limit: int = 800) -> FetchResult:
         payload = self.client.player_pool(limit=limit, status="ALL")
         records = []
@@ -433,6 +473,119 @@ def _normalize_player_pool_entry(entry: dict[str, Any]) -> dict[str, Any] | None
             str(entry.get("onTeamId")) if entry.get("onTeamId") else None
         ),
     }
+
+
+#: ESPN stat entry markers. statSourceId 1 = projected, 0 = actual result.
+PROJECTED_SOURCE_ID = 1
+#: statSplitTypeId 1 = single scoring period, 0 = season aggregate.
+WEEK_SPLIT_ID = 1
+SEASON_SPLIT_ID = 0
+
+
+def _projection_records(
+    entries: list[dict[str, Any]],
+    season: int,
+    week: int | None,
+    scope: str,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Extract projected stat lines from a ``kona_player_info`` payload.
+
+    Returns (records, mismatch_names). A mismatch means our re-scored total
+    diverges materially from ESPN's own ``appliedTotal``, which is the earliest
+    warning that the stat-id map has drifted.
+    """
+    records: list[dict[str, Any]] = []
+    mismatches: list[str] = []
+    wanted_split = WEEK_SPLIT_ID if scope == "week" else SEASON_SPLIT_ID
+
+    for entry in entries:
+        player = entry.get("player") or {}
+        player_id = player.get("id")
+        if not player_id:
+            continue
+
+        chosen = None
+        for stat_entry in player.get("stats", []) or []:
+            if stat_entry.get("statSourceId") != PROJECTED_SOURCE_ID:
+                continue
+            if stat_entry.get("statSplitTypeId") != wanted_split:
+                continue
+            if scope == "week" and week is not None:
+                if stat_entry.get("scoringPeriodId") != week:
+                    continue
+            if stat_entry.get("seasonId") not in (None, season):
+                continue
+            chosen = stat_entry
+            break
+
+        if chosen is None:
+            continue
+
+        raw_stats = chosen.get("stats") or {}
+        stat_line: dict[str, float] = {}
+        for raw_id, value in raw_stats.items():
+            try:
+                stat_id = int(raw_id)
+            except (TypeError, ValueError):
+                continue
+            key = C.STAT_BY_ID.get(stat_id)
+            if key is None or value is None:
+                continue
+            stat_line[key] = stat_line.get(key, 0.0) + float(value)
+
+        if not stat_line:
+            continue
+
+        applied_total = chosen.get("appliedTotal")
+        records.append(
+            {
+                "player_external_id": str(player_id),
+                "name": player.get("fullName"),
+                "position": C.POSITION_BY_ID.get(player.get("defaultPositionId", -1)),
+                "team": C.PRO_TEAM_BY_ID.get(player.get("proTeamId", 0), "FA"),
+                "season": season,
+                "week": week if scope == "week" else None,
+                "scope": scope,
+                "stat_line": stat_line,
+                # Deliberately NOT set as projected_points: the league's own
+                # scoring engine prices the stat line. Kept as a cross-check.
+                "provider_applied_total": applied_total,
+                "floor_points": None,
+                "ceiling_points": None,
+            }
+        )
+
+        if applied_total:
+            mismatches.extend(
+                [player.get("fullName") or str(player_id)]
+                if _materially_differs(stat_line, float(applied_total))
+                else []
+            )
+
+    return records, mismatches
+
+
+def _materially_differs(stat_line: dict[str, float], applied_total: float) -> bool:
+    """Cheap sanity check against ESPN's own total.
+
+    Uses a generic PPR-ish approximation rather than the league's real rules,
+    because this runs inside the adapter which has no league context. It is a
+    smoke alarm for a broken stat-id map, not a scoring assertion, so the
+    threshold is deliberately loose.
+    """
+    approx = (
+        stat_line.get("pass_yd", 0) * 0.04
+        + stat_line.get("pass_td", 0) * 4
+        - stat_line.get("pass_int", 0) * 2
+        + stat_line.get("rush_yd", 0) * 0.1
+        + stat_line.get("rush_td", 0) * 6
+        + stat_line.get("rec", 0) * 1.0
+        + stat_line.get("rec_yd", 0) * 0.1
+        + stat_line.get("rec_td", 0) * 6
+    )
+    if approx <= 1.0 or applied_total <= 1.0:
+        return False
+    return abs(approx - applied_total) / max(applied_total, 1.0) > 0.15
 
 
 def _team_name(team: dict[str, Any]) -> str:

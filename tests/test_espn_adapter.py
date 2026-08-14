@@ -212,3 +212,114 @@ def test_cookie_jar_normalizes_swid_braces():
 
 def test_no_cookies_when_credentials_absent():
     assert Settings(espn_league_id="1").espn_cookies == {}
+
+
+# --------------------------------------------------------------------------
+# Projections
+# --------------------------------------------------------------------------
+def player_pool_payload(stats: list[dict]) -> dict:
+    return {
+        "players": [
+            {
+                "player": {
+                    "id": 3139477,
+                    "fullName": "Test Quarterback",
+                    "defaultPositionId": 1,
+                    "proTeamId": 12,
+                    "stats": stats,
+                }
+            }
+        ]
+    }
+
+
+def projection_provider(payload: dict) -> EspnLeagueProvider:
+    def handler(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json=payload)
+
+    return EspnLeagueProvider(
+        Settings(espn_league_id="1", season=2026),
+        client=EspnClient("1", 2026, transport=httpx.MockTransport(handler)),
+    )
+
+
+WEEK_PROJECTION = {
+    "scoringPeriodId": 3,
+    "seasonId": 2026,
+    "statSourceId": 1,   # projected
+    "statSplitTypeId": 1,  # single week
+    "appliedTotal": 22.4,
+    "stats": {"3": 275.0, "4": 2.0, "20": 0.5, "24": 15.0},
+}
+
+
+def test_weekly_projection_extracts_canonical_stat_line():
+    provider = projection_provider(player_pool_payload([WEEK_PROJECTION]))
+    record = provider.fetch("projections_weekly", week=3).records[0]
+
+    assert record["player_external_id"] == "3139477"
+    assert record["week"] == 3
+    assert record["scope"] == "week"
+    assert record["stat_line"]["pass_yd"] == 275.0
+    assert record["stat_line"]["pass_td"] == 2.0
+    assert record["stat_line"]["rush_yd"] == 15.0
+
+
+def test_projection_does_not_trust_espn_applied_total():
+    """The league's own scoring engine must price the stat line; ESPN's total is
+    kept only as a cross-check."""
+    provider = projection_provider(player_pool_payload([WEEK_PROJECTION]))
+    record = provider.fetch("projections_weekly", week=3).records[0]
+
+    assert record.get("projected_points") is None
+    assert record["provider_applied_total"] == 22.4
+
+
+def test_actual_results_are_not_mistaken_for_projections():
+    """statSourceId 0 is what a player actually scored. Ingesting it as a
+    projection would leak future information into a decision."""
+    actual = {**WEEK_PROJECTION, "statSourceId": 0}
+    provider = projection_provider(player_pool_payload([actual]))
+    assert provider.fetch("projections_weekly", week=3).records == []
+
+
+def test_wrong_week_is_not_returned():
+    provider = projection_provider(player_pool_payload([WEEK_PROJECTION]))
+    assert provider.fetch("projections_weekly", week=9).records == []
+
+
+def test_season_scope_selects_the_season_split():
+    season_entry = {
+        "seasonId": 2026, "statSourceId": 1, "statSplitTypeId": 0,
+        "appliedTotal": 310.0, "stats": {"3": 4200.0, "4": 30.0},
+    }
+    provider = projection_provider(player_pool_payload([season_entry, WEEK_PROJECTION]))
+    records = provider.fetch("projections_season").records
+
+    assert len(records) == 1
+    assert records[0]["scope"] == "season"
+    assert records[0]["week"] is None
+    assert records[0]["stat_line"]["pass_yd"] == 4200.0
+
+
+def test_stat_id_mismatch_surfaces_as_a_warning():
+    """If our map is wrong the re-scored total drifts from ESPN's. That is the
+    earliest signal available and must not be silent."""
+    broken = {
+        **WEEK_PROJECTION,
+        "appliedTotal": 99.0,  # wildly inconsistent with the stat line
+    }
+    provider = projection_provider(player_pool_payload([broken]))
+    result = provider.fetch("projections_weekly", week=3)
+    assert any("stat-id mapping gap" in note for note in result.notes)
+
+
+def test_consistent_totals_produce_no_warning():
+    provider = projection_provider(player_pool_payload([WEEK_PROJECTION]))
+    result = provider.fetch("projections_weekly", week=3)
+    assert not any("mapping gap" in note for note in result.notes)
+
+
+def test_player_with_no_projection_entry_is_skipped_not_zeroed():
+    provider = projection_provider(player_pool_payload([]))
+    assert provider.fetch("projections_weekly", week=3).records == []
