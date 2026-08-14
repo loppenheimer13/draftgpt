@@ -510,9 +510,12 @@ def _projection_records(
                 continue
             if stat_entry.get("statSplitTypeId") != wanted_split:
                 continue
-            if scope == "week" and week is not None:
-                if stat_entry.get("scoringPeriodId") != week:
-                    continue
+            if (
+                scope == "week"
+                and week is not None
+                and stat_entry.get("scoringPeriodId") != week
+            ):
+                continue
             if stat_entry.get("seasonId") not in (None, season):
                 continue
             chosen = stat_entry
