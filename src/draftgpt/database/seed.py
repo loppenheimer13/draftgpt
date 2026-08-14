@@ -93,36 +93,68 @@ FILLER_POSITIONS = ["QB", "RB", "RB", "WR", "WR", "TE", "K", "DST", "RB", "WR", 
 FILLER_TEAMS = ["ATL", "CHI", "DEN", "HOU", "IND", "JAX", "LV", "MIA", "NE", "NO", "PIT", "TEN"]
 
 
+#: Realistic weekly point ranges per position, (best, worst).
+#:
+#: Position-appropriate ranges matter more than they look: a kicker projected
+#: like a WR1 sorts above every running back on a value-over-replacement board,
+#: which would make the fixture actively misleading about how the board behaves.
+FILLER_RANGE: dict[str, tuple[float, float]] = {
+    "QB": (24.0, 13.0),
+    "RB": (20.0, 4.0),
+    "WR": (19.0, 4.0),
+    "TE": (13.0, 3.0),
+    "K": (9.5, 6.0),
+    "DST": (10.5, 3.5),
+}
+
+
+def _filler_median(position: str, rank: int, pool: int) -> float:
+    """Deterministic descending value within a position's realistic range."""
+    best, worst = FILLER_RANGE.get(position, (15.0, 4.0))
+    if pool <= 1:
+        return best
+    fraction = min(1.0, (rank - 1) / (pool - 1))
+    return round(best - (best - worst) * fraction, 2)
+
+
 def _filler_players() -> list[dict[str, Any]]:
     """Deterministic opponents' rosters and the free-agent pool."""
-    players: list[dict[str, Any]] = []
+    raw: list[dict[str, Any]] = []
     index = 0
     for team_number in range(2, TEAM_COUNT + 1):
         for slot_index, position in enumerate(FILLER_POSITIONS):
             index += 1
-            players.append(
+            raw.append(
                 {
                     "player_external_id": f"f{index:04d}",
                     "name": f"Filler {position}{index:04d}",
                     "position": position,
                     "team": FILLER_TEAMS[(index + slot_index) % len(FILLER_TEAMS)],
                     "owner_team": str(team_number),
-                    # Deterministic descending value, no randomness.
-                    "median": round(20.0 - (index % 17) * 0.9, 2),
                 }
             )
     for extra in range(1, 61):
-        players.append(
+        raw.append(
             {
                 "player_external_id": f"fa{extra:04d}",
                 "name": f"FreeAgent {extra:04d}",
                 "position": FILLER_POSITIONS[extra % len(FILLER_POSITIONS)],
                 "team": FILLER_TEAMS[extra % len(FILLER_TEAMS)],
                 "owner_team": None,
-                "median": round(9.0 - (extra % 9) * 0.7, 2),
             }
         )
-    return players
+
+    # Rank within each position so values descend realistically per position
+    # rather than by a global counter.
+    counts: dict[str, int] = {}
+    for player in raw:
+        counts[player["position"]] = counts.get(player["position"], 0) + 1
+    seen: dict[str, int] = {}
+    for player in raw:
+        position = player["position"]
+        seen[position] = seen.get(position, 0) + 1
+        player["median"] = _filler_median(position, seen[position], counts[position])
+    return raw
 
 
 def build_fixture_files(target: Path) -> dict[str, Path]:
@@ -234,13 +266,108 @@ def build_fixture_files(target: Path) -> dict[str, Path]:
         "league_rosters": target / "league_rosters.json",
         "players": target / "players.json",
         "projections_weekly": target / "projections_weekly.csv",
+        "projections_season": target / "projections_season.csv",
+        "adp": target / "adp.csv",
     }
     paths["league_settings"].write_text(json.dumps(settings, indent=2) + "\n")
     paths["league_rosters"].write_text(json.dumps(rosters, indent=2) + "\n")
     paths["players"].write_text(json.dumps(all_players, indent=2) + "\n")
 
     _write_projections(paths["projections_weekly"], filler)
+    _write_season_projections(paths["projections_season"], filler)
+    _write_adp(paths["adp"], filler)
     return paths
+
+
+#: Fantasy weeks in the fixture season, used to scale weekly -> season totals.
+SEASON_GAMES = 17
+
+
+def _write_season_projections(path: Path, filler: list[dict[str, Any]]) -> None:
+    """Season totals, scaled from the weekly numbers.
+
+    The draft board needs season scope; scaling keeps the two views consistent
+    so a player who is better weekly is never worse on the season board.
+    """
+    columns = [
+        "player_external_id", "name", "position", "team", "season", "scope",
+        "rec", "rec_yd", "rec_td", "rush_yd", "rush_td", "pass_yd", "pass_td", "pass_int",
+        "floor_points", "ceiling_points",
+    ]
+    rows: list[dict[str, Any]] = []
+
+    for pid, name, position, team, _slot, median, floor, ceiling, _d in OWNER_ROSTER:
+        if pid in NO_PROJECTION:
+            continue
+        rows.append(
+            {
+                "player_external_id": pid, "name": name, "position": position, "team": team,
+                "season": SEASON, "scope": "season",
+                **{k: round(v * SEASON_GAMES, 2) for k, v in _stat_line(position, median).items()},
+                "floor_points": round(floor * SEASON_GAMES, 1),
+                "ceiling_points": round(ceiling * SEASON_GAMES, 1),
+            }
+        )
+
+    for player in filler:
+        median = player["median"]
+        rows.append(
+            {
+                "player_external_id": player["player_external_id"],
+                "name": player["name"],
+                "position": player["position"],
+                "team": player["team"],
+                "season": SEASON, "scope": "season",
+                **{
+                    k: round(v * SEASON_GAMES, 2)
+                    for k, v in _stat_line(player["position"], median).items()
+                },
+                "floor_points": round(median * 0.6 * SEASON_GAMES, 1),
+                "ceiling_points": round(median * 1.6 * SEASON_GAMES, 1),
+            }
+        )
+
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, restval="")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
+def _write_adp(path: Path, filler: list[dict[str, Any]]) -> None:
+    """Fixture ADP, deterministically derived from projected value.
+
+    Deliberately *not* a perfect match to value ordering: a fixed jitter creates
+    the market inefficiencies (players falling past their value, players going
+    early) that the board is supposed to detect.
+    """
+    scored = [
+        (pid, name, position, median)
+        for pid, name, position, _team, _slot, median, _f, _c, _d in OWNER_ROSTER
+        if pid not in NO_PROJECTION
+    ] + [
+        (p["player_external_id"], p["name"], p["position"], p["median"]) for p in filler
+    ]
+    scored.sort(key=lambda row: -row[3])
+
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(
+            handle, fieldnames=["player_external_id", "name", "position", "adp", "adp_stdev"]
+        )
+        writer.writeheader()
+        for index, (pid, name, position, _median) in enumerate(scored, start=1):
+            # Deterministic jitter: +/- a few picks, varying by index.
+            jitter = ((index * 7) % 11) - 5
+            adp = max(1.0, index + jitter)
+            writer.writerow(
+                {
+                    "player_external_id": pid,
+                    "name": name,
+                    "position": position,
+                    "adp": round(adp, 1),
+                    "adp_stdev": round(max(1.5, 0.55 * (adp ** 0.62)), 2),
+                }
+            )
 
 
 def _write_projections(path: Path, filler: list[dict[str, Any]]) -> None:

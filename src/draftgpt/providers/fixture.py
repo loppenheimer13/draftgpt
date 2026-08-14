@@ -57,6 +57,7 @@ FIXTURE_PROJECTION_SPEC = ProviderSpec(
         Capability.PROJECTIONS_WEEKLY,
         Capability.PROJECTIONS_SEASON,
         Capability.PROJECTIONS_ROS,
+        Capability.ADP,
     ),
     freshness_class=FreshnessClass.SLOW,
     requires_auth=False,
@@ -136,6 +137,28 @@ class FixtureProjectionProvider(ProjectionProvider):
         return FetchResult(
             capability="",
             records=self._load_csv("projections_season.csv"),
+            retrieved_at=datetime.now(UTC),
+        )
+
+    def fetch_adp(self, **_: Any) -> FetchResult:
+        path = self._dir / "adp.csv"
+        if not path.exists():
+            return FetchResult(capability="", records=[], retrieved_at=datetime.now(UTC))
+        with path.open(newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        return FetchResult(
+            capability="",
+            records=[
+                {
+                    "player_external_id": row["player_external_id"],
+                    "name": row.get("name"),
+                    "position": row.get("position"),
+                    "adp": float(row["adp"]),
+                    "adp_stdev": _opt_float(row.get("adp_stdev")),
+                }
+                for row in rows
+                if row.get("adp")
+            ],
             retrieved_at=datetime.now(UTC),
         )
 

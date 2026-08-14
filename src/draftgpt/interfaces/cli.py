@@ -33,10 +33,15 @@ sync_app = typer.Typer(help="Ingest external state into the database.", no_args_
 league_app = typer.Typer(help="League configuration.", no_args_is_help=True)
 roster_app = typer.Typer(help="Lineup recommendations.", no_args_is_help=True)
 
+prep_app = typer.Typer(
+    help="Pre-draft analysis: league strategy and draft board.", no_args_is_help=True
+)
+
 app.add_typer(sources_app, name="sources")
 app.add_typer(sync_app, name="sync")
 app.add_typer(league_app, name="league")
 app.add_typer(roster_app, name="roster")
+app.add_typer(prep_app, name="prep")
 
 console = Console()
 
@@ -281,6 +286,26 @@ def sync_projections_cmd(
         console.print(f"[yellow]unresolved: {', '.join(report.unresolved[:10])}[/yellow]")
 
 
+@sync_app.command("adp")
+def sync_adp_cmd(
+    provider: Annotated[str | None, typer.Option()] = None,
+    season: Annotated[int | None, typer.Option()] = None,
+) -> None:
+    """Ingest average draft position, which drives availability estimates."""
+    from draftgpt.ingestion.projections_sync import sync_adp
+    from draftgpt.providers.registry import build
+
+    settings = get_settings()
+    season = season or settings.season
+    adapter = build(provider or settings.league_provider)
+
+    with session_scope() as session:
+        report = sync_adp(session, adapter, season)
+    console.print(f"[green]{report.written} ADP rows written[/green]")
+    for note in report.notes:
+        console.print(f"  [dim]{note}[/dim]")
+
+
 @sync_app.command("context")
 def sync_context(
     season: Annotated[int | None, typer.Option()] = None,
@@ -462,6 +487,216 @@ def render_roster(response: CommandResponse) -> None:
 
 
 # --------------------------------------------------------------------------
+# prep
+# --------------------------------------------------------------------------
+IMPACT_STYLE = {
+    "defining": "bold red",
+    "high": "bold yellow",
+    "moderate": "cyan",
+    "minor": "dim",
+}
+
+
+@prep_app.command("league")
+def prep_league_cmd(
+    output_json: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """What your league settings imply for strategy."""
+    from draftgpt.commands.prep import prep_league
+
+    with session_scope() as session:
+        response = prep_league(session)
+        payload = json.loads(response.model_dump_json())
+
+    if output_json:
+        console.print_json(data=payload)
+        return
+
+    league = response.recommendation["league"]
+    console.print(
+        f"\n[bold]{league['scoring_format']} - {league['team_count']} teams - "
+        f"{'SUPERFLEX' if league['is_superflex'] else '1QB'}[/bold]"
+    )
+    console.print(
+        f"[dim]Starting: {' / '.join(response.recommendation['starting_lineup'])}   "
+        f"Bench: {league['bench_slots']}   FAAB: {league['faab_budget']}[/dim]\n"
+    )
+
+    demand = Table(title="Positional demand", show_header=True)
+    demand.add_column("Pos", style="cyan")
+    demand.add_column("Starters league-wide", justify="right")
+    demand.add_column("Per team", justify="right")
+    demand.add_column("Replacement rank", justify="right")
+    for row in response.recommendation["positional_demand"]:
+        demand.add_row(
+            row["position"],
+            f"{row['starters_league_wide']:.0f}",
+            f"{row['per_team']:.2f}",
+            f"{row['position']}{row['replacement_rank']}",
+        )
+    console.print(demand)
+
+    console.print("\n[bold]What this means[/bold]")
+    for finding in response.recommendation["findings"]:
+        style = IMPACT_STYLE.get(finding["impact"], "")
+        console.print(f"\n[{style}]{finding['impact'].upper()}[/{style}]  {finding['headline']}")
+        console.print(f"  {finding['detail']}")
+
+    console.print(f"\n[dim]calc {response.calculation_version}[/dim]")
+
+
+@prep_app.command("draft")
+def prep_draft_cmd(
+    position: Annotated[str | None, typer.Option("--position", "-p")] = None,
+    limit: Annotated[int, typer.Option("--limit", "-n")] = 30,
+    at_pick: Annotated[int | None, typer.Option(help="Estimate availability at this pick.")] = None,
+    draft_position: Annotated[int | None, typer.Option(help="Your draft slot.")] = None,
+    tier_max: Annotated[int | None, typer.Option(help="Only show tiers up to this.")] = None,
+    output_json: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """The draft board, priced under your league's rules."""
+    from draftgpt.commands.prep import prep_draft
+
+    with session_scope() as session:
+        response = prep_draft(
+            session,
+            position=position,
+            limit=limit,
+            at_pick=at_pick,
+            draft_position=draft_position,
+            tier_max=tier_max,
+        )
+        payload = json.loads(response.model_dump_json())
+
+    if output_json:
+        console.print_json(data=payload)
+        return
+
+    rec = response.recommendation
+    if not rec["board"]:
+        console.print("[yellow]Board is empty.[/yellow]")
+        for warning in rec.get("warnings", []):
+            console.print(f"  [yellow]{warning}[/yellow]")
+        return
+
+    table = Table(title=f"Draft board ({rec['filtered_to']} of {rec['total_ranked']})")
+    table.add_column("#", justify="right", style="dim")
+    table.add_column("Player")
+    table.add_column("Pos", style="cyan")
+    table.add_column("Tm")
+    table.add_column("Proj", justify="right")
+    table.add_column("VOR", justify="right")
+    table.add_column("Tier", justify="right")
+    table.add_column("ADP", justify="right")
+    table.add_column("Bye", justify="right")
+
+    for row in rec["board"]:
+        cliff = " [red]<- tier ends[/red]" if row["is_last_of_tier"] else ""
+        table.add_row(
+            str(row["overall_rank"]),
+            row["player"] + cliff,
+            row["position_rank"],
+            row["team"] or "",
+            f"{row['projected_points']:.0f}",
+            f"{row['value_over_replacement']:+.0f}",
+            str(row["tier"]),
+            f"{row['adp']:.0f}" if row["adp"] else "-",
+            str(row["bye_week"] or "-"),
+        )
+    console.print(table)
+
+    scarcity = Table(title="Scarcity")
+    scarcity.add_column("Pos", style="cyan")
+    scarcity.add_column("Needed", justify="right")
+    scarcity.add_column("Above replacement", justify="right")
+    scarcity.add_column("Surplus", justify="right")
+    for row in rec["scarcity"]:
+        surplus = row["surplus"]
+        style = "red" if surplus <= 0 else "green"
+        scarcity.add_row(
+            row["position"],
+            f"{row['starters_needed_league_wide']:.0f}",
+            str(row["available_above_replacement"]),
+            f"[{style}]{surplus:+d}[/{style}]",
+        )
+    console.print(scarcity)
+
+    if rec.get("availability_at_pick"):
+        console.print(f"\n[bold]Chance still available at pick {at_pick}[/bold]")
+        for row in rec["availability_at_pick"][:12]:
+            console.print(
+                f"  {row['player']:<28} {row['survival_probability']:.0%}  "
+                f"[dim](ADP {row['adp']:.0f})[/dim]"
+            )
+
+    for warning in rec.get("warnings", []):
+        console.print(f"\n[yellow]{warning}[/yellow]")
+
+
+@prep_app.command("player")
+def prep_player_cmd(
+    name: str,
+    at_pick: Annotated[int | None, typer.Option()] = None,
+    output_json: Annotated[bool, typer.Option("--json")] = False,
+) -> None:
+    """Value, tier, and availability for one player."""
+    from draftgpt.commands.prep import prep_player
+    from draftgpt.ingestion.identity import AmbiguousPlayerError
+
+    try:
+        with session_scope() as session:
+            response = prep_player(session, name, at_pick=at_pick)
+            payload = json.loads(response.model_dump_json())
+    except AmbiguousPlayerError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(1) from exc
+    except LookupError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(1) from exc
+
+    if output_json:
+        console.print_json(data=payload)
+        return
+
+    rec = response.recommendation
+    console.print(f"\n[bold]{rec.get('player', name)}[/bold]")
+    if rec.get("note"):
+        console.print(f"[yellow]{rec['note']}[/yellow]")
+        return
+    console.print(
+        f"{rec['position_rank']} - tier {rec['tier']} - overall value rank "
+        f"{rec['overall_rank']}"
+    )
+    console.print("\n[bold]Why[/bold]")
+    for reason in response.reasons:
+        console.print(f"  - {reason}")
+
+    if rec.get("positional_neighbours"):
+        table = Table(title="Nearby at this position")
+        table.add_column("Player")
+        table.add_column("Proj", justify="right")
+        table.add_column("VOR", justify="right")
+        table.add_column("Tier", justify="right")
+        for row in rec["positional_neighbours"]:
+            marker = " [cyan]<-[/cyan]" if row["player_id"] == rec["player_id"] else ""
+            table.add_row(
+                row["player"] + marker,
+                f"{row['projected_points']:.0f}",
+                f"{row['value_over_replacement']:+.0f}",
+                str(row["tier"]),
+            )
+        console.print(table)
+
+
+@app.command("mcp")
+def mcp_serve() -> None:
+    """Run the MCP server over stdio so a chat client can call these tools."""
+    from draftgpt.interfaces.mcp_server import main as mcp_main
+
+    mcp_main()
+
+
+# --------------------------------------------------------------------------
 # demo
 # --------------------------------------------------------------------------
 @app.command("demo")
@@ -478,7 +713,7 @@ def demo(
     from draftgpt.database.seed import BYE_TEAMS, SEASON, build_fixture_files
     from draftgpt.evaluation.scoring import ScoringRules
     from draftgpt.ingestion.league_sync import sync_league
-    from draftgpt.ingestion.projections_sync import sync_projections
+    from draftgpt.ingestion.projections_sync import sync_adp, sync_projections
     from draftgpt.ingestion.registry_sync import (
         ensure_nfl_teams,
         sync_players_from_league_provider,
@@ -511,14 +746,27 @@ def demo(
 
         rules = _latest_rules(session)
         scoring = ScoringRules.from_config(rules.scoring, f"{rules.id}:v{rules.version}")
-        projection_report = sync_projections(
-            session, build("fixture_projections"), SEASON, week=week, scope="week", rules=scoring
+        projections = build("fixture_projections")
+        weekly = sync_projections(
+            session, projections, SEASON, week=week, scope="week", rules=scoring
         )
-        console.print(f"[green]projections:[/green] {projection_report.summary()}")
+        console.print(f"[green]weekly projections:[/green] {weekly.summary()}")
+
+        season_report = sync_projections(
+            session, projections, SEASON, scope="season", rules=scoring
+        )
+        console.print(f"[green]season projections:[/green] {season_report.summary()}")
+
+        adp_report = sync_adp(session, projections, SEASON)
+        console.print(f"[green]adp:[/green] {adp_report.written} rows")
 
         response = recommend_lineup(session, league_report.league_season_id, week, objective)
 
     render_roster(response)
+    console.print(
+        "\n[dim]Also try: draftgpt prep league   |   draftgpt prep draft   |   "
+        "draftgpt prep player <name>[/dim]"
+    )
 
 
 @app.command("db-upgrade")

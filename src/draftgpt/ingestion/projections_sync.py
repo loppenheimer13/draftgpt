@@ -199,3 +199,63 @@ def players_by_id(session: Session, player_ids: list[str]) -> dict[str, Player]:
     return {
         p.id: p for p in session.scalars(select(Player).where(Player.id.in_(player_ids)))
     }
+
+
+def sync_adp(
+    session: Session,
+    provider: Provider,
+    season: int,
+) -> ProjectionSyncReport:
+    """Ingest average draft position.
+
+    ADP is what turns a ranking into a plan: it is the difference between "who
+    is best" and "who will still be there". Stored as snapshots so a board can
+    be replayed at the ADP that existed when the advice was given.
+    """
+    from draftgpt.database.models import AdpSnapshot
+
+    upsert_provider(session, provider.spec)
+    report = ProjectionSyncReport()
+
+    result = fetch_with_run(
+        session, provider, "adp", scope=f"season:{season}", required=False
+    )
+    if result is None:
+        report.notes.append(f"{provider.spec.key}:adp unavailable")
+        return report
+    report.notes.extend(result.notes)
+
+    db_provider = upsert_provider(session, provider.spec)
+    resolver = PlayerResolver(session)
+    id_map = {
+        m.external_id: m.player_id
+        for m in session.scalars(
+            select(PlayerProviderId).where(
+                PlayerProviderId.provider_key == provider.spec.key
+            )
+        )
+    }
+    retrieved = result.retrieved_at or datetime.now(UTC)
+
+    for record in result.records:
+        player_id = _resolve(session, resolver, provider.spec.key, record, id_map)
+        if player_id is None:
+            report.unresolved.append(record.get("name") or "?")
+            continue
+        session.add(
+            AdpSnapshot(
+                player_id=player_id,
+                season=season,
+                scoring_format="ppr",
+                adp=float(record["adp"]),
+                adp_stdev=record.get("adp_stdev"),
+                provider_id=db_provider.id,
+                retrieved_at=retrieved,
+                effective_at=result.effective_at or retrieved,
+            )
+        )
+        report.written += 1
+
+    session.flush()
+    logger.info("adp sync: %s", report.summary())
+    return report

@@ -37,6 +37,7 @@ SPEC = ProviderSpec(
         Capability.INJURIES,
         Capability.PROJECTIONS_WEEKLY,
         Capability.PROJECTIONS_SEASON,
+        Capability.ADP,
     ),
     freshness_class=FreshnessClass.RAPID,
     requires_auth=False,
@@ -333,6 +334,52 @@ class EspnLeagueProvider(LeagueProvider):
         )
         return self._result(records, effective_at=datetime.now(UTC))
 
+    def fetch_adp(self, limit: int = 600, **_: Any) -> FetchResult:
+        """ESPN's own average draft position.
+
+        This is the right ADP for an ESPN league: ESPN drafters behave like
+        ESPN drafters, and third-party ADP measures a different population.
+
+        ESPN does not publish dispersion, so ``adp_stdev`` is estimated. That
+        estimate is marked in the record rather than presented as observed --
+        survival probability is only as trustworthy as this number, and callers
+        must be able to tell the difference.
+        """
+        payload = self.client.player_pool(limit=limit, status="ALL")
+        records: list[dict[str, Any]] = []
+        missing = 0
+
+        for entry in payload.get("players", []) or []:
+            player = entry.get("player") or {}
+            ownership = player.get("ownership") or {}
+            adp = ownership.get("averageDraftPosition")
+            if not player.get("id"):
+                continue
+            if adp in (None, 0):
+                missing += 1
+                continue
+            adp = float(adp)
+            records.append(
+                {
+                    "player_external_id": str(player.get("id")),
+                    "name": player.get("fullName"),
+                    "position": C.POSITION_BY_ID.get(player.get("defaultPositionId", -1)),
+                    "adp": round(adp, 2),
+                    "adp_stdev": _estimate_adp_stdev(adp),
+                    "adp_stdev_is_estimated": True,
+                    "auction_value": ownership.get("auctionValueAverage"),
+                    "rostered_pct": ownership.get("percentOwned"),
+                }
+            )
+
+        notes = [
+            "adp_stdev is ESTIMATED from draft depth, not observed -- ESPN does "
+            "not publish dispersion; survival probabilities inherit that uncertainty"
+        ]
+        if missing:
+            notes.append(f"{missing} player(s) had no ESPN ADP and were skipped")
+        return self._result(records, notes=notes, effective_at=datetime.now(UTC))
+
     def fetch_injuries(self, limit: int = 800) -> FetchResult:
         payload = self.client.player_pool(limit=limit, status="ALL")
         records = []
@@ -566,6 +613,20 @@ def _projection_records(
             )
 
     return records, mismatches
+
+
+def _estimate_adp_stdev(adp: float) -> float:
+    """Approximate draft-position dispersion from depth.
+
+    Dispersion grows with ADP: the consensus top pick goes at 1.0 almost every
+    time, while a player averaging pick 100 routinely goes anywhere from 70 to
+    130. A square-root profile fits that shape and is bounded below so early
+    picks never imply false precision.
+
+    This is an approximation standing in for observed dispersion, and every
+    consumer is expected to treat it as such.
+    """
+    return round(max(1.5, 0.55 * (adp ** 0.62)), 2)
 
 
 def _materially_differs(stat_line: dict[str, float], applied_total: float) -> bool:

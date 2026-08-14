@@ -59,8 +59,11 @@ draftgpt demo                 # seeds a fixture league and runs /roster
 
 | Command | Status | Purpose |
 |---|---|---|
+| `prep league` | **implemented** | What your settings imply for strategy, with evidence |
+| `prep draft` | **implemented** | Draft board by value over replacement, tiers, cliffs, scarcity |
+| `prep player` | **implemented** | One player's value, tier, ADP, and availability |
 | `/roster` | **implemented** | Lineup recommendation, conditional swaps, next check time |
-| `/draft` | Phase 2 | Live draft board and pick recommendations |
+| `/draft` | Phase 2 | Live draft tracking and pick recommendations |
 | `/pulse` | Phase 3 | Material changes since last acknowledgement |
 | `/waiver` | Phase 3 | Ordered claim plan with FAAB bids |
 | `/trade` | Phase 4 | Two-sided lineup-delta trade evaluation |
@@ -68,6 +71,43 @@ draftgpt demo                 # seeds a fixture league and runs /roster
 Every command returns the same structured contract: recommendation,
 alternatives, confidence, reasons, material inputs, freshness, conditional
 triggers, and when to check again.
+
+## Talking to it from a chat client (MCP)
+
+The prep tools are exposed over MCP so you can ask questions in conversation
+instead of running commands:
+
+```bash
+pip install -e ".[mcp]"
+```
+
+Then register the server with your client. For Claude Code:
+
+```bash
+claude mcp add draftgpt -- /absolute/path/to/.venv/bin/draftgpt mcp
+```
+
+Or add it to a client config directly:
+
+```json
+{
+  "mcpServers": {
+    "draftgpt": {
+      "command": "/absolute/path/to/.venv/bin/draftgpt",
+      "args": ["mcp"],
+      "env": { "DRAFTGPT_DATABASE_URL": "sqlite:////absolute/path/to/data/draftgpt.db" }
+    }
+  }
+}
+```
+
+Tools exposed: `league_status`, `prep_league`, `prep_draft_board`,
+`prep_player`, `roster_recommend`. Every one is declared `readOnlyHint: true`
+at the protocol level.
+
+The server returns computed evidence rather than prose, and its instructions
+forbid asserting anything absent from the tool output — so the assistant
+narrates the database rather than its own recollection of fantasy football.
 
 ## Architecture
 

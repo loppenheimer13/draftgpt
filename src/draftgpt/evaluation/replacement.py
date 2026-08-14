@@ -110,29 +110,76 @@ class TierBreak:
     next_player_points: float
 
 
-def detect_tier_cliffs(
-    ranked_points: list[float], position: str, sensitivity: float = 1.5
-) -> list[TierBreak]:
-    """Find point gaps materially larger than the local average gap.
+def _median(values: list[float]) -> float:
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    middle = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[middle]
+    return (ordered[middle - 1] + ordered[middle]) / 2.0
 
-    Used by `/draft recommend` to answer "is this the last player of his tier?",
+
+def detect_tier_cliffs(
+    ranked_points: list[float],
+    position: str,
+    sensitivity: float = 1.5,
+    window: int = 5,
+    min_share_of_range: float = 0.03,
+    min_share_of_value: float = 0.015,
+) -> list[TierBreak]:
+    """Find point gaps materially larger than their *local* neighbourhood.
+
+    Used by the draft board to answer "is this the last player of his tier?",
     which is the question that actually drives a reach or a wait.
+
+    Comparing each gap to the global mean does not work on a real fantasy curve.
+    Positions are steep at the top and flat in the tail, so the tail drags the
+    mean below the typical top-of-curve gap and every early player gets flagged
+    as a tier boundary -- turning the most important signal on the board into
+    noise. Instead each gap is compared to the median of its neighbours, which
+    detects a genuine discontinuity in a uniformly steep region and ignores
+    ordinary steepness.
+
+    Two guards keep it honest:
+      * a **local median** baseline, robust to the outlier gap being measured;
+      * an **absolute floor**, so a trivial gap never counts as a cliff. The
+        floor is the larger of a share of the position's range and a share of
+        what a typical player there is worth -- the second matters when every
+        player at a position sits within a point of the next, as kickers do.
+        There, no tier exists at all and the honest answer is to say so.
     """
-    if len(ranked_points) < 3:
+    if len(ranked_points) < 4:
         return []
     ordered = sorted(ranked_points, reverse=True)
     gaps = [ordered[i] - ordered[i + 1] for i in range(len(ordered) - 1)]
-    mean_gap = sum(gaps) / len(gaps)
-    if mean_gap <= 0:
+    if not gaps or max(gaps) <= 0:
         return []
-    breaks = [
-        TierBreak(
-            position=position,
-            after_rank=i + 1,
-            gap=round(gap, 3),
-            next_player_points=round(ordered[i + 1], 3),
-        )
-        for i, gap in enumerate(gaps)
-        if gap >= mean_gap * sensitivity
-    ]
+
+    total_range = ordered[0] - ordered[-1]
+    typical_value = abs(_median(ordered))
+    absolute_floor = max(
+        total_range * min_share_of_range, typical_value * min_share_of_value
+    )
+
+    breaks: list[TierBreak] = []
+    for index, gap in enumerate(gaps):
+        low = max(0, index - window)
+        high = min(len(gaps), index + window + 1)
+        neighbours = [g for position_index, g in enumerate(gaps[low:high], start=low)
+                      if position_index != index]
+        baseline = _median(neighbours)
+        if baseline <= 0:
+            baseline = _median(gaps)
+        if baseline <= 0:
+            continue
+        if gap >= baseline * sensitivity and gap >= absolute_floor:
+            breaks.append(
+                TierBreak(
+                    position=position,
+                    after_rank=index + 1,
+                    gap=round(gap, 3),
+                    next_player_points=round(ordered[index + 1], 3),
+                )
+            )
     return breaks

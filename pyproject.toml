@@ -23,7 +23,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-mcp = ["mcp>=1.2"]
+# The server targets the mcp 2.x API (constructor callbacks, not decorators).
+mcp = ["mcp>=2.0"]
 postgres = ["psycopg[binary]>=3.1"]
 dev = [
     "pytest>=8.2",
