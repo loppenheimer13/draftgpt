@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "draftgpt"
+name = "huddle"
 version = "0.1.0"
-description = "League-specific fantasy football decision engine. Read-only, database-authoritative."
+description = "Daily fantasy football audio digests, published to a Yoto player."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -17,28 +17,37 @@ dependencies = [
     "rich>=13.7",
     "httpx>=0.27",
     "python-dateutil>=2.9",
-    # nflverse data access: player ID crosswalk, schedule, injuries, depth
-    # charts, usage, weather, betting context. Data is CC-BY-4.0 (attributed).
+    # Encrypts Yoto refresh tokens at rest.
+    "cryptography>=42.0",
+    # nflverse data access: player identity, schedule, injuries, depth charts,
+    # usage, weather, betting context. Data is CC-BY-4.0 (attributed).
     "nflreadpy>=0.1.5",
 ]
 
 [project.optional-dependencies]
-# The server targets the mcp 2.x API (constructor callbacks, not decorators).
-mcp = ["mcp>=2.0"]
+web = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.30",
+    "jinja2>=3.1",
+    "itsdangerous>=2.2",
+    "python-multipart>=0.0.9",
+]
 postgres = ["psycopg[binary]>=3.1"]
+narration = ["anthropic>=0.34"]
 dev = [
     "pytest>=8.2",
     "pytest-cov>=5.0",
     "ruff>=0.5",
     "mypy>=1.10",
     "respx>=0.21",
+    "httpx>=0.27",
 ]
 
 [project.scripts]
-draftgpt = "draftgpt.interfaces.cli:app"
+huddle = "huddle.interfaces.cli:app"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/draftgpt"]
+packages = ["src/huddle"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -58,6 +67,6 @@ ignore = ["B008"]
 
 [tool.mypy]
 python_version = "3.11"
-packages = ["draftgpt"]
+packages = ["huddle"]
 mypy_path = "src"
 ignore_missing_imports = true

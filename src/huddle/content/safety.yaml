@@ -1,0 +1,42 @@
+# Editable safety policy for the daily show.
+#
+# Everything here ADDS to the built-in defaults in huddle/domain/safety.py --
+# it cannot switch a protection off. That is deliberate: an incomplete edit
+# should never be able to widen what reaches a child.
+#
+# After editing, check your work with:  huddle safety test "some headline"
+
+# Story classifications the provider may hand us that are worth considering.
+allowed_types:
+  - recap
+  - preview
+  - story
+  - news
+  - headlinenews
+  - headline
+  - media
+  - highlights
+  - feature
+  - article
+
+# Extra phrases to block, grouped by topic. Matching is case-insensitive and
+# on word boundaries, so "bet" does not catch "better".
+blocked_terms:
+  local: []
+
+# Airable, but never as the lead item in a segment.
+caution_terms: []
+
+# Extra safe shapes. A story must match one of these (or be a recap) to run.
+# Patterns are Python regular expressions, matched case-insensitively.
+allow_patterns:
+  - name: youth
+    pattern: \b(little league|youth|high school|junior|academy|grassroots)\b
+
+# Minimum combined headline + summary length. Anything shorter has nothing in
+# it worth explaining to a child.
+min_summary_chars: 40
+
+# Require a positive shape match before a story can air. Leave this on.
+# Turning it off reverts to block-list-only behaviour, which is known to leak.
+require_shape_match: true

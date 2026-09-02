@@ -13,9 +13,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from draftgpt.config import get_settings
-from draftgpt.database.models import Base
-from draftgpt.database.session import prepare_sqlite_path
+from huddle.config import get_settings
+from huddle.database.models import Base
+from huddle.database.session import prepare_sqlite_path
 
 config = context.config
 

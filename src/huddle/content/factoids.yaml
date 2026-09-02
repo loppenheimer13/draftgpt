@@ -1,0 +1,311 @@
+# Rookie Factoid: one small, true, kid-sized explanation per show.
+#
+# These are the show's teaching moments. Each should be understandable to a
+# six-year-old, interesting to a twelve-year-old, and short enough to read in
+# about twenty seconds. Facts here are checked by hand -- nothing in this file
+# comes from an API, and nothing in it should ever need a correction.
+#
+# kind: rules | terminology | traditions | records
+
+factoids:
+  - kind: rules
+    question: 'Why is it called a hat trick?'
+    sport: 'Hockey'
+    answer: >-
+      In hockey and soccer, scoring three goals in one game is a hat trick. The
+      name comes from cricket, where a bowler who took three wickets in a row
+      won a new hat.
+
+  - kind: rules
+    question: 'What is offside?'
+    sport: 'Soccer'
+    answer: >-
+      In soccer, an attacker must have at least two defenders between them and
+      the goal when the ball is passed to them. It stops players from just
+      waiting next to the goal.
+
+  - kind: terminology
+    question: 'What is a double-double?'
+    sport: 'Basketball'
+    answer: >-
+      In basketball, a double-double means reaching double figures in two
+      different things in one game, like ten points and ten rebounds.
+
+  - kind: rules
+    question: 'Why do baseball games have no clock?'
+    sport: 'Baseball'
+    answer: >-
+      Baseball is the only major American sport without a game clock. A game
+      ends when the last out is made, which means a team is never truly out of
+      time.
+
+  - kind: traditions
+    question: 'The seventh-inning stretch'
+    sport: 'Baseball'
+    answer: >-
+      In the middle of the seventh inning of every baseball game, the whole
+      crowd stands up and sings. It has been happening for over a hundred years.
+
+  - kind: records
+    question: 'The longest game'
+    sport: 'Baseball'
+    answer: >-
+      The longest professional baseball game lasted thirty-three innings over
+      two days. Most games last nine.
+
+  - kind: rules
+    question: 'What is a penalty kick?'
+    sport: 'Soccer'
+    answer: >-
+      When a foul happens inside the box in soccer, the other team gets a free
+      shot from twelve yards out with only the goalkeeper to beat. Around three
+      in four are scored.
+
+  - kind: terminology
+    question: 'Why is zero called love in tennis?'
+    sport: 'Tennis'
+    answer: >-
+      Nobody is quite sure. The best guess is that it comes from the French word
+      for egg, because a zero looks like one.
+
+  - kind: rules
+    question: 'What is icing in hockey?'
+    sport: 'Hockey'
+    answer: >-
+      Icing is when a team shoots the puck all the way down the ice from their
+      own half. Play stops and the puck comes back, so teams cannot just clear
+      it forever.
+
+  - kind: traditions
+    question: 'The green jacket'
+    sport: 'Golf'
+    answer: >-
+      The winner of the Masters golf tournament is given a green jacket, and has
+      to give it back a year later unless they win again.
+
+  - kind: terminology
+    question: 'What does MVP mean?'
+    sport: 'General'
+    answer: >-
+      MVP stands for Most Valuable Player. It is given to the player judged to
+      have helped their team the most across a whole season.
+
+  - kind: rules
+    question: 'Why are there four downs?'
+    sport: 'Football'
+    answer: >-
+      In American football, a team gets four tries to move the ball ten yards.
+      If they make it, they get four more. If they do not, the other team gets
+      the ball.
+
+  - kind: records
+    question: 'The perfect season'
+    sport: 'Football'
+    answer: >-
+      Only one NFL team has ever won every single game in a season and the Super
+      Bowl: the 1972 Miami Dolphins.
+
+  - kind: traditions
+    question: 'Swapping shirts'
+    sport: 'Soccer'
+    answer: >-
+      At the end of a soccer match, players often swap shirts with an opponent
+      as a sign of respect. The tradition started in 1931.
+
+  - kind: rules
+    question: 'What is a shot clock?'
+    sport: 'Basketball'
+    answer: >-
+      Basketball teams have twenty-four seconds to take a shot. Before the rule
+      existed in 1954, teams would hold the ball for minutes at a time and games
+      were very dull.
+
+  - kind: terminology
+    question: 'What is a rookie?'
+    sport: 'General'
+    answer: >-
+      A rookie is a player in their first season. Most leagues give an award to
+      the best one each year.
+
+  - kind: records
+    question: 'Most goals in a season'
+    sport: 'Soccer'
+    answer: >-
+      In the 2011-12 season, Lionel Messi scored 91 goals in a single calendar
+      year, which is still the record.
+
+  - kind: rules
+    question: 'Why do hockey players change so often?'
+    sport: 'Hockey'
+    answer: >-
+      A hockey shift lasts about forty-five seconds. Skating that hard is so
+      tiring that players swap while the game is still going.
+
+  - kind: traditions
+    question: 'The Stanley Cup goes home'
+    sport: 'Hockey'
+    answer: >-
+      Every player on the winning hockey team gets the Stanley Cup for one day
+      to take wherever they like. It has been to the top of mountains and inside
+      cereal bowls.
+
+  - kind: terminology
+    question: 'What is a walk-off?'
+    sport: 'Baseball'
+    answer: >-
+      A walk-off is a hit that wins a baseball game instantly in the last
+      inning. It is called that because everyone just walks off the field.
+
+  - kind: rules
+    question: 'How does overtime work?'
+    sport: 'General'
+    answer: >-
+      When a game is tied at the end, most sports play extra time. In hockey it
+      is sudden death, which means the first goal wins straight away.
+
+  - kind: records
+    question: 'The tallest and shortest'
+    sport: 'Basketball'
+    answer: >-
+      The tallest NBA players have been seven foot seven. The shortest was five
+      foot three, and he was very good at stealing the ball.
+
+  - kind: traditions
+    question: 'Why do teams have mascots?'
+    sport: 'General'
+    answer: >-
+      Mascots started as real animals kept for luck. Now they are costumed
+      characters whose whole job is to make the crowd louder.
+
+  - kind: terminology
+    question: 'What is a clean sheet?'
+    sport: 'Soccer'
+    answer: >-
+      In soccer, a goalkeeper keeps a clean sheet when the other team does not
+      score at all.
+
+  - kind: rules
+    question: 'What is a technical foul?'
+    sport: 'Basketball'
+    answer: >-
+      A technical foul in basketball is given for unsporting behaviour rather
+      than contact, like arguing with the referee.
+
+  - kind: records
+    question: 'The fastest serve'
+    sport: 'Tennis'
+    answer: >-
+      The fastest tennis serve ever measured travelled at 163 miles an hour,
+      which crosses the court in under half a second.
+
+  - kind: traditions
+    question: 'Numbers get retired'
+    sport: 'General'
+    answer: >-
+      When a team retires a number, no player on that team will ever wear it
+      again. It is the highest honour most clubs give.
+
+  - kind: terminology
+    question: 'What is a triple-double?'
+    sport: 'Basketball'
+    answer: >-
+      Ten or more in three categories in one basketball game, usually points,
+      rebounds and assists. It is rare enough to make the news.
+
+  - kind: rules
+    question: 'Why is there a designated hitter?'
+    sport: 'Baseball'
+    answer: >-
+      In baseball, the designated hitter bats instead of the pitcher, because
+      pitchers spend all their practice time throwing rather than hitting.
+
+  - kind: records
+    question: 'The longest winning streak'
+    sport: 'Basketball'
+    answer: >-
+      A women's college basketball team once won 111 games in a row, across four
+      seasons.
+
+  - kind: traditions
+    question: 'Singing before kickoff'
+    sport: 'Soccer'
+    answer: >-
+      Many soccer clubs have a song the whole crowd sings before every home
+      match. Liverpool's has been sung since 1963.
+
+  - kind: terminology
+    question: 'What is a grand slam?'
+    sport: 'General'
+    answer: >-
+      In baseball, a grand slam is a home run with all three bases loaded, worth
+      four runs at once. In tennis it means winning all four major tournaments.
+
+  - kind: rules
+    question: 'How long is a marathon?'
+    sport: 'Running'
+    answer: >-
+      A marathon is 26.2 miles. The odd distance was set in 1908 so the race
+      could finish in front of the royal box.
+
+  - kind: records
+    question: 'Youngest and oldest'
+    sport: 'Baseball'
+    answer: >-
+      The youngest player to appear in a major league baseball game was fifteen.
+      The oldest was fifty-nine.
+
+  - kind: traditions
+    question: 'The coin toss'
+    sport: 'General'
+    answer: >-
+      Most games start with a coin toss to decide who goes first. It is the
+      fairest thing anyone has ever invented.
+
+  - kind: terminology
+    question: 'What is a hat trick in soccer?'
+    sport: 'Soccer'
+    answer: >-
+      Three goals by one player in one match. Fans traditionally throw hats onto
+      the ice in hockey, but not onto the pitch in soccer.
+
+  - kind: rules
+    question: 'Why do referees use video now?'
+    sport: 'General'
+    answer: >-
+      Most big leagues now let officials watch a replay before making a close
+      call. It takes longer, but it gets more decisions right.
+
+  - kind: records
+    question: 'Most championships'
+    sport: 'Basketball'
+    answer: >-
+      The Boston Celtics and the Los Angeles Lakers have each won the NBA title
+      seventeen times, more than anyone else.
+
+  - kind: traditions
+    question: 'Home and away kits'
+    sport: 'Soccer'
+    answer: >-
+      Teams wear a second, different-coloured kit when they play away, so that
+      from a distance nobody confuses the two sides.
+
+  - kind: terminology
+    question: 'What is a shutout?'
+    sport: 'General'
+    answer: >-
+      A shutout is when one team stops the other from scoring at all for the
+      whole game.
+
+  - kind: rules
+    question: 'Why is the WNBA season in summer?'
+    sport: 'Basketball'
+    answer: >-
+      The WNBA plays from May to October, so it does not compete with the NBA
+      for arenas or attention, and players can play overseas in winter.
+
+  - kind: records
+    question: 'The comeback'
+    sport: 'Basketball'
+    answer: >-
+      In 2016 the Cleveland Cavaliers came back from three games to nothing in
+      the NBA Finals. No team had ever done it before, and none has since.

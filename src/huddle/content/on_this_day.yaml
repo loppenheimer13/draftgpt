@@ -1,0 +1,351 @@
+# Memorable sports moments, one per calendar date where we have one.
+#
+# These are hand-written for a young audience: no tragedies, no scandals, no
+# records that only make sense to an adult. When today has no entry, the show
+# picks one from this same list deterministically by date, so every household
+# hears the same moment on the same day and no moment repeats too soon.
+#
+# Fields: month, day, title, story, league (a label, not a catalogue key).
+
+moments:
+  - month: 1
+    day: 8
+    title: 'The oldest trophy in football'
+    league: 'Soccer'
+    story: >-
+      Soccer's FA Cup has been played since 1871, and tiny amateur clubs are
+      allowed to enter and sometimes beat professional ones.
+
+  - month: 1
+    day: 15
+    title: 'The first Super Bowl'
+    league: 'NFL'
+    story: >-
+      The first Super Bowl was played in 1967, and tickets cost twelve dollars.
+
+  - month: 1
+    day: 22
+    title: 'Kobe Bryant scores 81 points'
+    league: 'NBA'
+    story: >-
+      In 2006, Kobe Bryant of the Los Angeles Lakers scored 81 points in a
+      single basketball game. Only one player has ever scored more in one game.
+
+  - month: 2
+    day: 1
+    title: 'The Miracle on Ice team is honored'
+    league: 'NHL'
+    story: >-
+      The 1980 United States hockey team, made up mostly of college students,
+      beat a Soviet team that had won almost every tournament for twenty years.
+      People still call it the Miracle on Ice.
+
+  - month: 2
+    day: 5
+    title: 'Tom Brady wins a seventh title'
+    league: 'NFL'
+    story: >-
+      In 2023 Tom Brady retired having won seven Super Bowls, more than any
+      single team has ever won.
+
+  - month: 2
+    day: 17
+    title: "Michael Jordan's first title"
+    league: 'NBA'
+    story: >-
+      Michael Jordan won six championships with the Chicago Bulls, and never
+      lost a Finals series.
+
+  - month: 2
+    day: 23
+    title: 'The Miracle on Ice, one day later'
+    league: 'NHL'
+    story: >-
+      After beating the Soviet team, the United States still had to win one more
+      game to take the gold medal. They did.
+
+  - month: 3
+    day: 3
+    title: 'Wilt Chamberlain scores 100'
+    league: 'NBA'
+    story: >-
+      In 1962, Wilt Chamberlain scored 100 points in one basketball game. Nobody
+      has come close since.
+
+  - month: 3
+    day: 17
+    title: 'The March tournament begins'
+    league: 'NCAAM'
+    story: >-
+      Every March, sixty-eight college basketball teams play until only one is
+      left. Teams nobody expects to win often knock out the favourites, which is
+      why people call it March Madness.
+
+  - month: 3
+    day: 29
+    title: 'Caitlin Clark breaks the scoring record'
+    league: 'NCAAW'
+    story: >-
+      Caitlin Clark became the highest scorer in the history of major college
+      basketball, and filled arenas everywhere she played.
+
+  - month: 4
+    day: 8
+    title: 'Hank Aaron passes Babe Ruth'
+    league: 'MLB'
+    story: >-
+      In 1974 Hank Aaron hit his 715th home run, passing a record that had stood
+      for thirty-nine years.
+
+  - month: 4
+    day: 15
+    title: 'Jackie Robinson Day'
+    league: 'MLB'
+    story: >-
+      In 1947 Jackie Robinson played his first game for the Brooklyn Dodgers,
+      becoming the first Black player in the modern major leagues. Every player
+      in baseball wears his number, 42, on this day each year.
+
+  - month: 4
+    day: 20
+    title: 'The Boston Marathon'
+    league: 'Running'
+    story: >-
+      The Boston Marathon is the oldest yearly marathon in the world, first run
+      in 1897.
+
+  - month: 5
+    day: 6
+    title: 'The four-minute mile'
+    league: 'Track'
+    story: >-
+      In 1954 Roger Bannister ran a mile in under four minutes. Doctors had said
+      it could not be done.
+
+  - month: 5
+    day: 17
+    title: 'The Preakness and the Triple Crown'
+    league: 'Racing'
+    story: >-
+      Only thirteen horses have ever won the Triple Crown, which means winning
+      three particular races in the same year.
+
+  - month: 5
+    day: 25
+    title: 'The bicycle kick'
+    league: 'Soccer'
+    story: >-
+      A bicycle kick is when a player leaps backwards and kicks the ball over
+      their own head. It is the hardest goal in soccer to score and the most fun
+      to watch.
+
+  - month: 6
+    day: 8
+    title: 'The NBA Finals'
+    league: 'NBA'
+    story: >-
+      The NBA Finals are best of seven. No team has ever come back from three
+      games to nothing except one, in 2016.
+
+  - month: 6
+    day: 12
+    title: 'The Stanley Cup is lifted'
+    league: 'NHL'
+    story: >-
+      Hockey's Stanley Cup is the oldest trophy in North American sport, and
+      every player who wins it gets their name carved into the silver.
+
+  - month: 6
+    day: 19
+    title: 'Steph Curry changes basketball'
+    league: 'NBA'
+    story: >-
+      Stephen Curry made more three-point shots than anyone in history and got a
+      whole generation shooting from further out.
+
+  - month: 6
+    day: 30
+    title: "Sue Bird's last season"
+    league: 'WNBA'
+    story: >-
+      Sue Bird played twenty-one seasons in the WNBA, won four championships,
+      and made more assists than anyone in league history.
+
+  - month: 7
+    day: 4
+    title: 'The hot dog and the ballpark'
+    league: 'MLB'
+    story: >-
+      Baseball on the Fourth of July is an American tradition older than most of
+      the stadiums it is played in.
+
+  - month: 7
+    day: 10
+    title: 'Serena and Venus at Wimbledon'
+    league: 'Tennis'
+    story: >-
+      Sisters Serena and Venus Williams have won Wimbledon between them more
+      than a dozen times, sometimes playing each other in the final.
+
+  - month: 7
+    day: 11
+    title: 'The United States wins the World Cup'
+    league: 'Soccer'
+    story: >-
+      The United States women's soccer team has won the World Cup four times,
+      more than any other country.
+
+  - month: 8
+    day: 5
+    title: 'The Olympic Games open'
+    league: 'Olympics'
+    story: >-
+      Every four years, athletes from more than two hundred countries meet at
+      the Olympics. The five rings on the flag stand for five parts of the
+      world.
+
+  - month: 8
+    day: 9
+    title: 'Jesse Owens wins four golds'
+    league: 'Olympics'
+    story: >-
+      At the 1936 Olympics, Jesse Owens won four gold medals in front of a crowd
+      that had been told he could not.
+
+  - month: 8
+    day: 26
+    title: 'Little League World Series'
+    league: 'Youth'
+    story: >-
+      Every August, teams of eleven and twelve year olds from around the world
+      play a tournament in Pennsylvania that is shown on television everywhere.
+
+  - month: 9
+    day: 5
+    title: 'The US Open night session'
+    league: 'Tennis'
+    story: >-
+      Tennis at the US Open is played under lights in New York, and the crowd is
+      the loudest of any tournament in the sport.
+
+  - month: 9
+    day: 8
+    title: 'Cal Ripken never misses a game'
+    league: 'MLB'
+    story: >-
+      Cal Ripken Junior played 2,632 baseball games in a row without missing
+      one. That is more than sixteen years without a day off.
+
+  - month: 9
+    day: 20
+    title: 'Billie Jean King wins the Battle of the Sexes'
+    league: 'Tennis'
+    story: >-
+      In 1973 Billie Jean King beat Bobby Riggs in front of ninety million
+      viewers, and changed what people believed women's tennis could be.
+
+  - month: 9
+    day: 28
+    title: 'Ted Williams bats .406'
+    league: 'MLB'
+    story: >-
+      In 1941 Ted Williams got a hit in four out of every ten times he batted
+      across a whole season. Nobody has done it since.
+
+  - month: 10
+    day: 1
+    title: 'Roger Maris hits number 61'
+    league: 'MLB'
+    story: >-
+      In 1961 Roger Maris hit his 61st home run of the season on the very last
+      day.
+
+  - month: 10
+    day: 15
+    title: 'Wayne Gretzky, the Great One'
+    league: 'NHL'
+    story: >-
+      Wayne Gretzky scored so many points in hockey that even if you removed
+      every goal he ever scored, he would still be the leading scorer of all
+      time.
+
+  - month: 10
+    day: 23
+    title: 'The World Series begins'
+    league: 'MLB'
+    story: >-
+      Baseball's championship is best of seven games. The team that wins four
+      first takes the trophy.
+
+  - month: 10
+    day: 29
+    title: 'A no-hitter'
+    league: 'MLB'
+    story: >-
+      A no-hitter is when a pitcher throws a whole game without the other team
+      getting a single hit. It happens only a few times a year.
+
+  - month: 11
+    day: 3
+    title: 'The New York City Marathon'
+    league: 'Running'
+    story: >-
+      More than fifty thousand runners cross all five boroughs of New York City
+      in one morning, and the person in last place gets cheered as loudly as the
+      winner.
+
+  - month: 11
+    day: 12
+    title: 'The forward pass is legalised'
+    league: 'NFL'
+    story: >-
+      Until 1906, throwing the ball forward in American football was against the
+      rules. Legalising it invented the game we watch now.
+
+  - month: 11
+    day: 19
+    title: "The women's game grows"
+    league: 'Soccer'
+    story: >-
+      The 2023 Women's World Cup was watched by nearly two billion people, the
+      largest audience a women's sporting event has ever had.
+
+  - month: 11
+    day: 25
+    title: 'Thanksgiving football'
+    league: 'NFL'
+    story: >-
+      American football has been played on Thanksgiving since 1876. The Detroit
+      Lions have hosted a game nearly every year since 1934.
+
+  - month: 12
+    day: 2
+    title: 'Simone Biles lands the impossible'
+    league: 'Gymnastics'
+    story: >-
+      Simone Biles has four gymnastics moves named after her, because she was
+      the first person to land them in competition.
+
+  - month: 12
+    day: 8
+    title: 'Lionel Messi lifts the World Cup'
+    league: 'Soccer'
+    story: >-
+      In 2022 Lionel Messi finally won the World Cup with Argentina, in what
+      many people call the greatest final ever played.
+
+  - month: 12
+    day: 20
+    title: "Pelé's thousandth goal"
+    league: 'Soccer'
+    story: >-
+      Pelé scored more than a thousand goals and won three World Cups, the only
+      player ever to do so.
+
+  - month: 12
+    day: 26
+    title: 'Boxing Day football'
+    league: 'Soccer'
+    story: >-
+      In England, football is played on the day after Christmas, and grounds are
+      fuller than almost any other day of the year.
